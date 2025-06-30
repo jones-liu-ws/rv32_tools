@@ -1,0 +1,1388 @@
+{
+   "name": "RISCV Instructions",
+   "description": "A collection of RISC-V RV32I instructions with their encodings, descriptions, and assembly code examples.",
+   "RV_I": [
+      {
+         "name": "lui",
+         "description": "Load upper immediate",
+         "encoding": "0110111",
+         "format": "U-type",
+         "example": "lui x1, 0x1234",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0110111"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "31:12",
+               "name": "imm",
+               "value": "imm[31:12]"
+            }
+         ]
+      },
+      {
+         "name": "auipc",
+         "description": "Add upper immediate to PC",
+         "encoding": "0010111",
+         "format": "U-type",
+         "example": "auipc x2, 0x5678",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0010111"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "31:12",
+               "name": "imm",
+               "value": "imm[31:12]"
+            }
+         ]
+      },
+      {
+         "name": "jal",
+         "description": "Jump and link",
+         "encoding": "1101111",
+         "format": "J-type",
+         "example": "jal x1, label",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "1101111"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "31:12",
+               "name": "imm",
+               "value": "imm[20|10:1|11|19:12]"
+            }
+         ]
+      },
+      {
+         "name": "jalr",
+         "description": "Jump and link register",
+         "encoding": "1100111",
+         "format": "I-type",
+         "example": "jalr x1, x2, 100",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "1100111"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "000"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "base register"
+            },
+            {
+               "bits": "31:20",
+               "name": "imm",
+               "value": "imm[11:0]"
+            }
+         ]
+      },
+      {
+         "name": "beq",
+         "description": "Branch if equal",
+         "encoding": "1100011",
+         "format": "B-type",
+         "example": "beq x1, x2, label",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "1100011"
+            },
+            {
+               "bits": "11:7",
+               "name": "imm",
+               "value": "imm[4:1|11]"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "000"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "imm",
+               "value": "imm[12|10:5]"
+            }
+         ]
+      },
+      {
+         "name": "bne",
+         "description": "Branch if not equal",
+         "encoding": "1100011",
+         "format": "B-type",
+         "example": "bne x1, x2, label",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "1100011"
+            },
+            {
+               "bits": "11:7",
+               "name": "imm",
+               "value": "imm[4:1|11]"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "001"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "imm",
+               "value": "imm[12|10:5]"
+            }
+         ]
+      },
+      {
+         "name": "blt",
+         "description": "Branch if less than",
+         "encoding": "1100011",
+         "format": "B-type",
+         "example": "blt x1, x2, label",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "1100011"
+            },
+            {
+               "bits": "11:7",
+               "name": "imm",
+               "value": "imm[4:1|11]"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "100"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "imm",
+               "value": "imm[12|10:5]"
+            }
+         ]
+      },
+      {
+         "name": "bge",
+         "description": "Branch if greater or equal",
+         "encoding": "1100011",
+         "format": "B-type",
+         "example": "bge x1, x2, label",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "1100011"
+            },
+            {
+               "bits": "11:7",
+               "name": "imm",
+               "value": "imm[4:1|11]"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "101"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "imm",
+               "value": "imm[12|10:5]"
+            }
+         ]
+      },
+      {
+         "name": "bltu",
+         "description": "Branch if less than unsigned",
+         "encoding": "1100011",
+         "format": "B-type",
+         "example": "bltu x1, x2, label",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "1100011"
+            },
+            {
+               "bits": "11:7",
+               "name": "imm",
+               "value": "imm[4:1|11]"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "110"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "imm",
+               "value": "imm[12|10:5]"
+            }
+         ]
+      },
+      {
+         "name": "bgeu",
+         "description": "Branch if greater or equal unsigned",
+         "encoding": "1100011",
+         "format": "B-type",
+         "example": "bgeu x1, x2, label",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "1100011"
+            },
+            {
+               "bits": "11:7",
+               "name": "imm",
+               "value": "imm[4:1|11]"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "111"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "imm",
+               "value": "imm[12|10:5]"
+            }
+         ]
+      },
+      {
+         "name": "lb",
+         "description": "Load byte",
+         "encoding": "0000011",
+         "format": "I-type",
+         "example": "lb x1, 4(x2)",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0000011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "000"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "base register"
+            },
+            {
+               "bits": "31:20",
+               "name": "imm",
+               "value": "imm[11:0]"
+            }
+         ]
+      },
+      {
+         "name": "lh",
+         "description": "Load halfword",
+         "encoding": "0000011",
+         "format": "I-type",
+         "example": "lh x1, 4(x2)",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0000011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "001"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "base register"
+            },
+            {
+               "bits": "31:20",
+               "name": "imm",
+               "value": "imm[11:0]"
+            }
+         ]
+      },
+      {
+         "name": "lw",
+         "description": "Load word",
+         "encoding": "0000011",
+         "format": "I-type",
+         "example": "lw x1, 4(x2)",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0000011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "010"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "base register"
+            },
+            {
+               "bits": "31:20",
+               "name": "imm",
+               "value": "imm[11:0]"
+            }
+         ]
+      },
+      {
+         "name": "lbu",
+         "description": "Load byte unsigned",
+         "encoding": "0000011",
+         "format": "I-type",
+         "example": "lbu x1, 4(x2)",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0000011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "100"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "base register"
+            },
+            {
+               "bits": "31:20",
+               "name": "imm",
+               "value": "imm[11:0]"
+            }
+         ]
+      },
+      {
+         "name": "lhu",
+         "description": "Load halfword unsigned",
+         "encoding": "0000011",
+         "format": "I-type",
+         "example": "lhu x1, 4(x2)",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0000011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "101"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "base register"
+            },
+            {
+               "bits": "31:20",
+               "name": "imm",
+               "value": "imm[11:0]"
+            }
+         ]
+      },
+      {
+         "name": "sb",
+         "description": "Store byte",
+         "encoding": "0100011",
+         "format": "S-type",
+         "example": "sb x1, 4(x2)",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0100011"
+            },
+            {
+               "bits": "11:7",
+               "name": "imm",
+               "value": "imm[4:0]"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "000"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "base register"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register"
+            },
+            {
+               "bits": "31:25",
+               "name": "imm",
+               "value": "imm[11:5]"
+            }
+         ]
+      },
+      {
+         "name": "sh",
+         "description": "Store halfword",
+         "encoding": "0100011",
+         "format": "S-type",
+         "example": "sh x1, 4(x2)",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0100011"
+            },
+            {
+               "bits": "11:7",
+               "name": "imm",
+               "value": "imm[4:0]"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "001"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "base register"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register"
+            },
+            {
+               "bits": "31:25",
+               "name": "imm",
+               "value": "imm[11:5]"
+            }
+         ]
+      },
+      {
+         "name": "sw",
+         "description": "Store word",
+         "encoding": "0100011",
+         "format": "S-type",
+         "example": "sw x1, 4(x2)",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0100011"
+            },
+            {
+               "bits": "11:7",
+               "name": "imm",
+               "value": "imm[4:0]"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "010"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "base register"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register"
+            },
+            {
+               "bits": "31:25",
+               "name": "imm",
+               "value": "imm[11:5]"
+            }
+         ]
+      },
+      {
+         "name": "addi",
+         "description": "Add immediate",
+         "encoding": "0010011",
+         "format": "I-type",
+         "example": "addi x1, x2, 10",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0010011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "000"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register"
+            },
+            {
+               "bits": "31:20",
+               "name": "imm",
+               "value": "imm[11:0]"
+            }
+         ]
+      },
+      {
+         "name": "slti",
+         "description": "Set less than immediate",
+         "encoding": "0010011",
+         "format": "I-type",
+         "example": "slti x1, x2, 10",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0010011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "010"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register"
+            },
+            {
+               "bits": "31:20",
+               "name": "imm",
+               "value": "imm[11:0]"
+            }
+         ]
+      },
+      {
+         "name": "sltiu",
+         "description": "Set less than immediate unsigned",
+         "encoding": "0010011",
+         "format": "I-type",
+         "example": "sltiu x1, x2, 10",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0010011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "011"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register"
+            },
+            {
+               "bits": "31:20",
+               "name": "imm",
+               "value": "imm[11:0]"
+            }
+         ]
+      },
+      {
+         "name": "xori",
+         "description": "Exclusive OR immediate",
+         "encoding": "0010011",
+         "format": "I-type",
+         "example": "xori x1, x2, 0xFF",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0010011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "100"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register"
+            },
+            {
+               "bits": "31:20",
+               "name": "imm",
+               "value": "imm[11:0]"
+            }
+         ]
+      },
+      {
+         "name": "ori",
+         "description": "OR immediate",
+         "encoding": "0010011",
+         "format": "I-type",
+         "example": "ori x1, x2, 0xFF",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0010011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "110"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register"
+            },
+            {
+               "bits": "31:20",
+               "name": "imm",
+               "value": "imm[11:0]"
+            }
+         ]
+      },
+      {
+         "name": "andi",
+         "description": "AND immediate",
+         "encoding": "0010011",
+         "format": "I-type",
+         "example": "andi x1, x2, 0xFF",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0010011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "111"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register"
+            },
+            {
+               "bits": "31:20",
+               "name": "imm",
+               "value": "imm[11:0]"
+            }
+         ]
+      },
+      {
+         "name": "slli",
+         "description": "Shift left logical immediate",
+         "encoding": "0010011",
+         "format": "I-type",
+         "example": "slli x1, x2, 5",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0010011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "001"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register"
+            },
+            {
+               "bits": "24:20",
+               "name": "imm",
+               "value": "shamt[4:0]"
+            },
+            {
+               "bits": "31:25",
+               "name": "funct7",
+               "value": "0000000"
+            }
+         ]
+      },
+      {
+         "name": "srli",
+         "description": "Shift right logical immediate",
+         "encoding": "0010011",
+         "format": "I-type",
+         "example": "srli x1, x2, 5",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0010011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "101"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register"
+            },
+            {
+               "bits": "24:20",
+               "name": "imm",
+               "value": "shamt[4:0]"
+            },
+            {
+               "bits": "31:25",
+               "name": "funct7",
+               "value": "0000000"
+            }
+         ]
+      },
+      {
+         "name": "srai",
+         "description": "Shift right arithmetic immediate",
+         "encoding": "0010011",
+         "format": "I-type",
+         "example": "srai x1, x2, 5",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0010011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "101"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register"
+            },
+            {
+               "bits": "24:20",
+               "name": "imm",
+               "value": "shamt[4:0]"
+            },
+            {
+               "bits": "31:25",
+               "name": "funct7",
+               "value": "0100000"
+            }
+         ]
+      },
+      {
+         "name": "add",
+         "description": "Add",
+         "encoding": "0110011",
+         "format": "R-type",
+         "example": "add x1, x2, x3",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0110011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "000"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "funct7",
+               "value": "0000000"
+            }
+         ]
+      },
+      {
+         "name": "sub",
+         "description": "Subtract",
+         "encoding": "0110011",
+         "format": "R-type",
+         "example": "sub x1, x2, x3",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0110011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "000"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "funct7",
+               "value": "0100000"
+            }
+         ]
+      },
+      {
+         "name": "sll",
+         "description": "Shift left logical",
+         "encoding": "0110011",
+         "format": "R-type",
+         "example": "sll x1, x2, x3",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0110011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "001"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "funct7",
+               "value": "0000000"
+            }
+         ]
+      },
+      {
+         "name": "slt",
+         "description": "Set less than",
+         "encoding": "0110011",
+         "format": "R-type",
+         "example": "slt x1, x2, x3",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0110011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "010"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "funct7",
+               "value": "0000000"
+            }
+         ]
+      },
+      {
+         "name": "sltu",
+         "description": "Set less than unsigned",
+         "encoding": "0110011",
+         "format": "R-type",
+         "example": "sltu x1, x2, x3",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0110011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "011"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "funct7",
+               "value": "0000000"
+            }
+         ]
+      },
+      {
+         "name": "xor",
+         "description": "Exclusive OR",
+         "encoding": "0110011",
+         "format": "R-type",
+         "example": "xor x1, x2, x3",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0110011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "100"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "funct7",
+               "value": "0000000"
+            }
+         ]
+      },
+      {
+         "name": "srl",
+         "description": "Shift right logical",
+         "encoding": "0110011",
+         "format": "R-type",
+         "example": "srl x1, x2, x3",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0110011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "101"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "funct7",
+               "value": "0000000"
+            }
+         ]
+      },
+      {
+         "name": "sra",
+         "description": "Shift right arithmetic",
+         "encoding": "0110011",
+         "format": "R-type",
+         "example": "sra x1, x2, x3",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0110011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "101"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "funct7",
+               "value": "0100000"
+            }
+         ]
+      },
+      {
+         "name": "or",
+         "description": "OR",
+         "encoding": "0110011",
+         "format": "R-type",
+         "example": "or x1, x2, x3",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0110011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "110"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "funct7",
+               "value": "0000000"
+            }
+         ]
+      },
+      {
+         "name": "and",
+         "description": "AND",
+         "encoding": "0110011",
+         "format": "R-type",
+         "example": "and x1, x2, x3",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0110011"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "destination register"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "111"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "source register 1"
+            },
+            {
+               "bits": "24:20",
+               "name": "rs2",
+               "value": "source register 2"
+            },
+            {
+               "bits": "31:25",
+               "name": "funct7",
+               "value": "0000000"
+            }
+         ]
+      },
+      {
+         "name": "fence",
+         "description": "Fence",
+         "encoding": "0001111",
+         "format": "I-type",
+         "example": "fence iorw, iorw",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0001111"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "00000"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "000"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "00000"
+            },
+            {
+               "bits": "23:20",
+               "name": "succ",
+               "value": "successor set"
+            },
+            {
+               "bits": "27:24",
+               "name": "pred",
+               "value": "predecessor set"
+            },
+            {
+               "bits": "31:28",
+               "name": "fm",
+               "value": "fence mode"
+            }
+         ]
+      }
+   ]
+}

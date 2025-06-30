@@ -1,0 +1,74 @@
+{
+   "name": "RISCV Instructions",
+   "description": "A collection of RISC-V system instructions with their encodings and descriptions.",
+   "RV_System": [
+        {
+           "name": "mret",
+           "description": "Return from machine exception",
+           "encoding": "1110011",
+           "format": "I-type",
+           "example": "mret",
+           "fields": [
+              {
+                 "bits": "6:0",
+                 "name": "opcode",
+                 "value": "1110011"
+              },
+              {
+                 "bits": "11:7",
+                 "name": "rd",
+                 "value": "00000"
+              },
+              {
+                 "bits": "14:12",
+                 "name": "funct3",
+                 "value": "000"
+              },
+              {
+                 "bits": "19:15",
+                 "name": "rs1",
+                 "value": "00000"
+              },
+              {
+                 "bits": "31:20",
+                 "name": "imm[11:0]",
+                 "value": "001100000010"
+              }
+           ]
+        },
+        {
+           "name": "wfi",
+           "description": "Wait for interrupt.",
+           "encoding": "1110011",
+           "format": "I-type",
+           "example": "wfi",
+           "fields": [
+              {
+                 "bits": "6:0",
+                 "name": "opcode",
+                 "value": "1110011"
+              },
+              {
+                 "bits": "11:7",
+                 "name": "rd",
+                 "value": "00000"
+              },
+              {
+                 "bits": "14:12",
+                 "name": "funct3",
+                 "value": "000"
+              },
+              {
+                 "bits": "19:15",
+                 "name": "rs1",
+                 "value": "00000"
+              },
+              {
+                 "bits": "31:20",
+                 "name": "imm[11:0]",
+                 "value": "000100000101"
+              }
+           ]
+        }
+   ]
+}

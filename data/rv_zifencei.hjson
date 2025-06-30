@@ -1,0 +1,40 @@
+{
+   "name": "RISCV Instructions",
+   "description": "A collection of RISC-V RV32I instructions with their encodings, descriptions, and assembly code examples.",
+   "RV_Zifencei": [
+    {
+         "name": "fence.i",
+         "description": "Fence instruction",
+         "encoding": "0001111",
+         "format": "I-type",
+         "example": "fence.i",
+         "fields": [
+            {
+               "bits": "6:0",
+               "name": "opcode",
+               "value": "0001111"
+            },
+            {
+               "bits": "11:7",
+               "name": "rd",
+               "value": "00000"
+            },
+            {
+               "bits": "14:12",
+               "name": "funct3",
+               "value": "001"
+            },
+            {
+               "bits": "19:15",
+               "name": "rs1",
+               "value": "00000"
+            },
+            {
+               "bits": "31:20",
+               "name": "imm[11:0]",
+               "value": "000000000000"
+            }
+         ]
+      }
+   ]
+}

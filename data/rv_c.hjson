@@ -1,0 +1,914 @@
+{
+   "name": "RV32C Instructions",
+   "description": "A comprehensive collection of RISC-V Compressed (RV32C) instructions with their encodings and descriptions.",
+   "RV_C": [
+        {
+            "name": "c.addi4spn",
+            "description": "Add immediate to stack pointer, non-destructive",
+            "encoding": "00",
+            "format": "CIW-type",
+            "example": "addi s0,sp,32", //"c.addi4spn x8, 4",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "00"
+                },
+                {
+                    "bits": "4:2",
+                    "name": "rd'",
+                    "value": "destination register (x8-x15)"
+                },
+                {
+                    "bits": "12:5",
+                    "name": "imm",
+                    "value": "nzimm[9:2]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "func3",
+                    "value": "000"
+                }
+            ]
+        },
+        {
+            "name": "c.lw",
+            "description": "Load word (compressed)",
+            "encoding": "00",
+            "format": "CL-type",
+            "example": "c.lw x8, 4(x9)",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "00"
+                },
+                {
+                    "bits": "4:2",
+                    "name": "rd'",
+                    "value": "destination register (x8-x15)"
+                },
+                {
+                    "bits": "6:5",
+                    "name": "imm",
+                    "value": "imm[6:5]"
+                },
+                {
+                    "bits": "9:7",
+                    "name": "rs1'",
+                    "value": "base register (x8-x15)"
+                },
+                {
+                    "bits": "11:10",
+                    "name": "imm",
+                    "value": "imm[4:3]"
+                },
+                {
+                    "bits": "12",
+                    "name": "imm",
+                    "value": "imm[2]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "010"
+                }
+            ]
+        },
+        {
+            "name": "c.sw",
+            "description": "Store word (compressed)",
+            "encoding": "00",
+            "format": "CS-type",
+            "example": "c.sw x8, 4(x9)",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "00"
+                },
+                {
+                    "bits": "4:2",
+                    "name": "rs2'",
+                    "value": "source register (x8-x15)"
+                },
+                {
+                    "bits": "6:5",
+                    "name": "imm",
+                    "value": "imm[6:5]"
+                },
+                {
+                    "bits": "9:7",
+                    "name": "rs1'",
+                    "value": "base register (x8-x15)"
+                },
+                {
+                    "bits": "11:10",
+                    "name": "imm",
+                    "value": "imm[4:3]"
+                },
+                {
+                    "bits": "12",
+                    "name": "imm",
+                    "value": "imm[2]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "110"
+                }
+            ]
+        },
+        {
+            "name": "c.nop",
+            "description": "NOP (compressed)",
+            "encoding": "01",
+            "format": "CI-type",
+            "example": "c.nop",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "imm[4:0]",
+                    "value": "00000"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd/rs1",
+                    "value": "00000"
+                },
+                {
+                    "bits": "15:12",
+                    "name": "funct4",
+                    "value": "000"
+                }
+            ]
+        },
+        {
+            "name": "c.addi",
+            "description": "Add immediate (compressed)",
+            "encoding": "01",
+            "format": "CI-type",
+            "example": "c.addi x5, 4",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "imm",
+                    "value": "imm[4:0]"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd/rs1",
+                    "value": "destination/source register (not x0)"
+                    "constraint": "rd != 0"
+                },
+                {
+                    "bits": "12",
+                    "name": "imm",
+                    "value": "imm[5]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "000"
+                }
+            ]
+        },
+        {
+            "name": "c.jal",
+            "description": "Jump and link (compressed)",
+            "encoding": "01",
+            "format": "CJ-type",
+            "example": "c.jal label",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "12:2",
+                    "name": "imm",
+                    "value": "imm[11|4|9:8|10|6|7|3:1|5]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "001"
+                }
+            ]
+        },
+        {
+            "name": "c.li",
+            "description": "Load immediate (compressed)",
+            "encoding": "01",
+            "format": "CI-type",
+            "example": "c.li x5, 4",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "imm",
+                    "value": "imm[4:0]"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register (not x0)"
+                    "constraint": "rd != 0"
+                },
+                {
+                    "bits": "12",
+                    "name": "imm",
+                    "value": "imm[5]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "010"
+                }
+            ]
+        },
+        {
+            "name": "c.addi16sp",
+            "description": "Add immediate to stack pointer x2, scaled by 16",
+            "encoding": "01",
+            "format": "CI-type",
+            "example": "addi sp,sp,32", //"c.addi16sp 16",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "imm",
+                    "value": "nzimm[4|6|8:7|5]"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "00010"
+                },
+                {
+                    "bits": "12",
+                    "name": "imm",
+                    "value": "nzimm[9]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "011"
+                }
+            ]
+        },
+        {
+            "name": "c.lui",
+            "description": "Load upper immediate (compressed)",
+            "encoding": "01",
+            "format": "CI-type",
+            "example": "c.lui x5, 0x10",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "imm",
+                    "value": "nzimm[16:12]"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register (not x0/x2)"
+                    "constraint": "rd != 0 , rd != 2"
+                },
+                {
+                    "bits": "12",
+                    "name": "imm",
+                    "value": "nzimm[17]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "011"
+                }
+            ]
+        },
+        {
+            "name": "c.srli",
+            "description": "Shift right logical immediate (compressed)",
+            "encoding": "01",
+            "format": "CB-type",
+            "example": "c.srli x8, 4",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "imm",
+                    "value": "shamt[4:0]"
+                },
+                {
+                    "bits": "9:7",
+                    "name": "rd'/rs1'",
+                    "value": "register (x8-x15)"
+                },
+                {
+                    "bits": "11:10",
+                    "name": "funct2",
+                    "value": "00"
+                },
+                {
+                    "bits": "12",
+                    "name": "imm",
+                    "value": "0" //"shamt[5]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "100"
+                }
+            ]
+        },
+        {
+            "name": "c.srai",
+            "description": "Shift right arithmetic immediate (compressed)",
+            "encoding": "01",
+            "format": "CB-type",
+            "example": "c.srai x8, 4",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "imm",
+                    "value": "shamt[4:0]"
+                },
+                {
+                    "bits": "9:7",
+                    "name": "rd'/rs1'",
+                    "value": "register (x8-x15)"
+                },
+                {
+                    "bits": "11:10",
+                    "name": "funct2",
+                    "value": "01"
+                },
+                {
+                    "bits": "12",
+                    "name": "imm",
+                    "value": "0" //"shamt[5]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "100"
+                }
+            ]
+        },
+        {
+            "name": "c.andi",
+            "description": "AND immediate (compressed)",
+            "encoding": "01",
+            "format": "CB-type",
+            "example": "c.andi x8, 4",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "imm",
+                    "value": "imm[4:0]"
+                },
+                {
+                    "bits": "9:7",
+                    "name": "rd'/rs1'",
+                    "value": "register (x8-x15)"
+                },
+                {
+                    "bits": "11:10",
+                    "name": "funct2",
+                    "value": "10"
+                },
+                {
+                    "bits": "12",
+                    "name": "imm",
+                    "value": "imm[5]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "100"
+                }
+            ]
+        },
+        {
+            "name": "c.sub",
+            "description": "Subtract (compressed)",
+            "encoding": "01",
+            "format": "CA-type",
+            "example": "c.sub x8, x9",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "4:2",
+                    "name": "rs2'",
+                    "value": "source register 2 (x8-x15)"
+                },
+                {
+                    "bits": "6:5",
+                    "name": "funct2",
+                    "value": "00"
+                },
+                {
+                    "bits": "9:7",
+                    "name": "rd'/rs1'",
+                    "value": "destination/source register 1 (x8-x15)"
+                },
+                {
+                    "bits": "15:10",
+                    "name": "funct6",
+                    "value": "100011"
+                }
+            ]
+        },
+        {
+            "name": "c.xor",
+            "description": "Exclusive OR (compressed)",
+            "encoding": "01",
+            "format": "CA-type",
+            "example": "c.xor x8, x9",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "4:2",
+                    "name": "rs2'",
+                    "value": "source register 2 (x8-x15)"
+                },
+                {
+                    "bits": "6:5",
+                    "name": "funct2",
+                    "value": "01"
+                },
+                {
+                    "bits": "9:7",
+                    "name": "rd'/rs1'",
+                    "value": "destination/source register 1 (x8-x15)"
+                },
+                {
+                    "bits": "15:10",
+                    "name": "funct6",
+                    "value": "100011"
+                }
+            ]
+        },
+        {
+            "name": "c.or",
+            "description": "OR (compressed)",
+            "encoding": "01",
+            "format": "CA-type",
+            "example": "c.or x8, x9",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "4:2",
+                    "name": "rs2'",
+                    "value": "source register 2 (x8-x15)"
+                },
+                {
+                    "bits": "6:5",
+                    "name": "funct2",
+                    "value": "10"
+                },
+                {
+                    "bits": "9:7",
+                    "name": "rd'/rs1'",
+                    "value": "destination/source register 1 (x8-x15)"
+                },
+                {
+                    "bits": "15:10",
+                    "name": "funct6",
+                    "value": "100011"
+                }
+            ]
+        },
+        {
+            "name": "c.and",
+            "description": "AND (compressed)",
+            "encoding": "01",
+            "format": "CA-type",
+            "example": "c.and x8, x9",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "4:2",
+                    "name": "rs2'",
+                    "value": "source register 2 (x8-x15)"
+                },
+                {
+                    "bits": "6:5",
+                    "name": "funct2",
+                    "value": "11"
+                },
+                {
+                    "bits": "9:7",
+                    "name": "rd'/rs1'",
+                    "value": "destination/source register 1 (x8-x15)"
+                },
+                {
+                    "bits": "15:10",
+                    "name": "funct6",
+                    "value": "100011"
+                }
+            ]
+        },
+        {
+            "name": "c.j",
+            "description": "Jump (compressed)",
+            "encoding": "01",
+            "format": "CJ-type",
+            "example": "c.j label",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "12:2",
+                    "name": "imm",
+                    "value": "imm[11|4|9:8|10|6|7|3:1|5]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "101"
+                }
+            ]
+        },
+        {
+            "name": "c.beqz",
+            "description": "Branch if equal to zero (compressed)",
+            "encoding": "01",
+            "format": "CB-type",
+            "example": "c.beqz x8, label",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "imm",
+                    "value": "imm[7:3]"
+                },
+                {
+                    "bits": "9:7",
+                    "name": "rs1'",
+                    "value": "source register (x8-x15)"
+                },
+                {
+                    "bits": "11:10",
+                    "name": "imm",
+                    "value": "imm[2:1]"
+                },
+                {
+                    "bits": "12",
+                    "name": "imm",
+                    "value": "imm[8]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "110"
+                }
+            ]
+        },
+        {
+            "name": "c.bnez",
+            "description": "Branch if not equal to zero (compressed)",
+            "encoding": "01",
+            "format": "CB-type",
+            "example": "c.bnez x8, label",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "01"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "imm",
+                    "value": "imm[7:3]"
+                },
+                {
+                    "bits": "9:7",
+                    "name": "rs1'",
+                    "value": "source register (x8-x15)"
+                },
+                {
+                    "bits": "11:10",
+                    "name": "imm",
+                    "value": "imm[2:1]"
+                },
+                {
+                    "bits": "12",
+                    "name": "imm",
+                    "value": "imm[8]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "111"
+                }
+            ]
+        },
+        {
+            "name": "c.slli",
+            "description": "Shift left logical immediate (compressed)",
+            "encoding": "10",
+            "format": "CI-type",
+            "example": "c.slli x5, 4",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "10"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "imm",
+                    "value": "shamt[4:0]"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd/rs1",
+                    "value": "destination/source register (not x0)"
+                    "constraint": "rd != 0"
+                },
+                {
+                    "bits": "12",
+                    "name": "imm",
+                    "value": "0" //"shamt[5]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "000"
+                }
+            ]
+        },
+        {
+            "name": "c.lwsp",
+            "description": "Load word from stack pointer (compressed)",
+            "encoding": "10",
+            "format": "CI-type",
+            "example": "lw s0,28(sp)",  //"c.lwsp x5, 8",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "10"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "imm",
+                    "value": "imm[4:2|7:6]"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destinatioon register (not x0)"
+                    "constraint": "rd != 0"
+                },
+                {
+                    "bits": "12",
+                    "name": "imm",
+                    "value": "imm[5]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "010"
+                }
+            ]
+        },
+        {
+            "name": "c.jr",
+            "description": "Jump register (compressed)",
+            "encoding": "10",
+            "format": "CR-type",
+            "example": "c.jr x5",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "10"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "rs2",
+                    "value": "00000"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rs1",
+                    "value": "source register (not x0)"
+                    "constraint": "rs1 != 0"
+                },
+                {
+                    "bits": "15:12",
+                    "name": "funct4",
+                    "value": "1000"
+                }            ]
+        },
+        {
+            "name": "c.mv",
+            "description": "Copy register (compressed)",
+            "encoding": "10",
+            "format": "CR-type",
+            "example": "c.mv x5, x6",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "10"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "rs2",
+                    "value": "source register (not x0)"
+                    "constraint": "rs2 != 0"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register (not x0)"
+                    "constraint": "rd != 0"
+                },
+                {
+                    "bits": "15:12",
+                    "name": "funct4",
+                    "value": "1000"
+                }            ]
+        },
+        {
+            "name": "c.ebreak",
+            "description": "Environment break (compressed)",
+            "encoding": "10",
+            "format": "CR-type",
+            "example": "c.ebreak",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "10"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "rs2",
+                    "value": "00000"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rs1",
+                    "value": "00000"
+                },
+                {
+                    "bits": "15:12",
+                    "name": "funct4",
+                    "value": "1001"
+                }            
+            ]
+        },
+        {
+            "name": "c.jalr",
+            "description": "Jump and link register (compressed)",
+            "encoding": "10",
+            "format": "CR-type",
+            "example": "c.jalr x5",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "10"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "rs2",
+                    "value": "00000"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rs1",
+                    "value": "source register (not x0)"
+                    "constraint": "rs1 != 0"
+                },
+                {
+                    "bits": "15:12",
+                    "name": "funct4",
+                    "value": "1001"
+                }            ]
+        },
+        {
+            "name": "c.add",
+            "description": "Add (compressed)",
+            "encoding": "10",
+            "format": "CR-type",
+            "example": "c.add x5, x6",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "10"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "rs2",
+                    "value": "source register 2 (not x0)"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd/rs1",
+                    "value": "destination/source register 1 (not x0)"
+                },
+                {
+                    "bits": "15:12",
+                    "name": "funct4",
+                    "value": "1001"
+                }            ]
+        },
+        {
+            "name": "c.swsp",
+            "description": "Store word to stack pointer (compressed)",
+            "encoding": "10",
+            "format": "CSS-type",
+            "example": "sw s0,28(sp)",  //"c.swsp x5, 8",
+            "fields": [
+                {
+                    "bits": "1:0",
+                    "name": "opcode",
+                    "value": "10"
+                },
+                {
+                    "bits": "6:2",
+                    "name": "rs2",
+                    "value": "source register"
+                },
+                {
+                    "bits": "12:7",
+                    "name": "imm",
+                    "value": "imm[5:2|7:6]"
+                },
+                {
+                    "bits": "15:13",
+                    "name": "funct3",
+                    "value": "110"
+                }
+            ]
+        }
+   ]
+}

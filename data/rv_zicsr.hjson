@@ -1,0 +1,278 @@
+{
+   "name": "RISCV Instructions",
+   "description": "A collection of RISC-V CSR instructions (RV32_Zicsr) with their encodings and descriptions.",
+   "RV_Zicsr": [
+        {
+           "name": "ecall",
+           "description": "Environment call",
+           "encoding": "1110011",
+           "format": "I-type",
+           "example": "ecall",
+           "fields": [
+              {
+                 "bits": "6:0",
+                 "name": "opcode",
+                 "value": "1110011"
+              },
+              {
+                 "bits": "11:7",
+                 "name": "rd",
+                 "value": "00000"
+              },
+              {
+                 "bits": "14:12",
+                 "name": "funct3",
+                 "value": "000"
+              },
+              {
+                 "bits": "19:15",
+                 "name": "rs1",
+                 "value": "00000"
+              },
+              {
+                 "bits": "31:20",
+                 "name": "imm[11:0]",
+                 "value": "000000000000"
+              }
+           ]
+        },
+        {
+           "name": "ebreak",
+           "description": "Environment break",
+           "encoding": "1110011",
+           "format": "I-type",
+           "example": "ebreak",
+           "fields": [
+              {
+                 "bits": "6:0",
+                 "name": "opcode",
+                 "value": "1110011"
+              },
+              {
+                 "bits": "11:7",
+                 "name": "rd",
+                 "value": "00000"
+              },
+              {
+                 "bits": "14:12",
+                 "name": "funct3",
+                 "value": "000"
+              },
+              {
+                 "bits": "19:15",
+                 "name": "rs1",
+                 "value": "00000"
+              },
+              {
+                 "bits": "31:20",
+                 "name": "imm[11:0]",
+                 "value": "000000000001"
+              }
+           ]
+        },
+        {
+            "name": "csrrw",
+            "description": "Atomic Read/Write CSR",
+            "encoding": "1110011",
+            "format": "I-type",
+            "example": "csrrw x5, mstatus, x6",
+            "fields": [
+                {
+                    "bits": "6:0",
+                    "name": "opcode",
+                    "value": "1110011"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register"
+                },
+                {
+                    "bits": "14:12",
+                    "name": "funct3",
+                    "value": "001"
+                },
+                {
+                    "bits": "19:15",
+                    "name": "rs1",
+                    "value": "source register"
+                },
+                {
+                    "bits": "31:20",
+                    "name": "csr",
+                    "value": "CSR address"
+                }
+            ]
+        },
+        {
+            "name": "csrrs",
+            "description": "Atomic Read and Set CSR",
+            "encoding": "1110011",
+            "format": "I-type",
+            "example": "csrrs x5, mstatus, x6",
+            "fields": [
+                {
+                    "bits": "6:0",
+                    "name": "opcode",
+                    "value": "1110011"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register"
+                },
+                {
+                    "bits": "14:12",
+                    "name": "funct3",
+                    "value": "010"
+                },
+                {
+                    "bits": "19:15",
+                    "name": "rs1",
+                    "value": "source register"
+                },
+                {
+                    "bits": "31:20",
+                    "name": "csr",
+                    "value": "CSR address"
+                }
+            ]
+        },
+        {
+            "name": "csrrc",
+            "description": "Atomic Read and Clear CSR",
+            "encoding": "1110011",
+            "format": "I-type",
+            "example": "csrrc x5, mstatus, x6",
+            "fields": [
+                {
+                    "bits": "6:0",
+                    "name": "opcode",
+                    "value": "1110011"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register"
+                },
+                {
+                    "bits": "14:12",
+                    "name": "funct3",
+                    "value": "011"
+                },
+                {
+                    "bits": "19:15",
+                    "name": "rs1",
+                    "value": "source register"
+                },
+                {
+                    "bits": "31:20",
+                    "name": "csr",
+                    "value": "CSR address"
+                }
+            ]
+        },
+        {
+            "name": "csrrwi",
+            "description": "Atomic Read/Write CSR immediate",
+            "encoding": "1110011",
+            "format": "I-type",
+            "example": "csrrwi x5, mstatus, 4",
+            "fields": [
+                {
+                    "bits": "6:0",
+                    "name": "opcode",
+                    "value": "1110011"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register"
+                },
+                {
+                    "bits": "14:12",
+                    "name": "funct3",
+                    "value": "101"
+                },
+                {
+                    "bits": "19:15",
+                    "name": "imm",
+                    "value": "uimm[4:0]"
+                },
+                {
+                    "bits": "31:20",
+                    "name": "csr",
+                    "value": "CSR address"
+                }
+            ]
+        },
+        {
+            "name": "csrrsi",
+            "description": "Atomic Read and Set CSR immediate",
+            "encoding": "1110011",
+            "format": "I-type",
+            "example": "csrrsi x5, mstatus, 4",
+            "fields": [
+                {
+                    "bits": "6:0",
+                    "name": "opcode",
+                    "value": "1110011"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register"
+                },
+                {
+                    "bits": "14:12",
+                    "name": "funct3",
+                    "value": "110"
+                },
+                {
+                    "bits": "19:15",
+                    "name": "imm",
+                    "value": "uimm[4:0]"
+                },
+                {
+                    "bits": "31:20",
+                    "name": "csr",
+                    "value": "CSR address"
+                }
+            ]
+        },
+        {
+            "name": "csrrci",
+            "description": "Atomic Read and Clear CSR immediate",
+            "encoding": "1110011",
+            "format": "I-type",
+            "example": "csrrci x5, mstatus, 4",
+            "fields": [
+                {
+                    "bits": "6:0",
+                    "name": "opcode",
+                    "value": "1110011"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register"
+                },
+                {
+                    "bits": "14:12",
+                    "name": "funct3",
+                    "value": "111"
+                },
+                {
+                    "bits": "19:15",
+                    "name": "imm",
+                    "value": "uimm[4:0]"
+                },
+                {
+                    "bits": "31:20",
+                    "name": "csr",
+                    "value": "CSR address"
+                }
+            ]
+        }
+   ]
+}

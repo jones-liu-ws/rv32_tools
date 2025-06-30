@@ -1,0 +1,177 @@
+{
+   "name":"RISCV Instructions" ,
+   "description":"A collection of RISC-V instructions with their encodings and descriptions.",
+   "RV32I":[
+        {
+            "name": "lb",
+            "description": "Load byte",
+            "encoding": "0000011",
+            "format": "I-type",
+            "fields": [
+                {
+                    bits:"6:0",
+                    name: "opcode",
+                    value: "0000011"
+                },
+                {
+                    bits:"11:7",
+                    name: "rd",
+                    value: "destination register"
+                },
+                {
+                    bits:"14:12",
+                    name: "funct3",
+                    value: "000 (load byte)"
+                },
+                {
+                    bits:"19:15",
+                    name: "rs1",
+                    value: "base register"
+                },
+                {
+                    bits:"31:20",
+                    name: "imm",
+                    value: "immediate value (offset)"
+                }
+            ]
+        },
+        {
+            "name": "sb",
+            "description": "Store byte",
+            "encoding": "0100011",
+            "format": "S-type",
+            "fields": [
+                {
+                    bits: "6:0",
+                    name: "opcode",
+                    value: "0100011"
+                },
+                {
+                    bits: "11:7",
+                    name: "rs2",
+                    value: "source register (data to store)"
+                },
+                {
+                    bits: "14:12",
+                    name: "funct3",
+                    value: "000 (store byte)"
+                },
+                {
+                    bits: "19:15",
+                    name: "rs1",
+                    value: "base register"
+                },
+                {
+                    bits: "31:25, 11:7",
+                    name: "imm",
+                    value: "immediate value (offset)"
+                }
+            ]
+        }
+   ],
+   "RV32M":[
+        {
+            "name": "mul",
+            "description": "Multiply",
+            "encoding": "0110011",
+            "format": "R-type",
+            "fields": [
+                {
+                    bits: "6:0",
+                    name: "opcode",
+                    value: "0110011"
+                },
+                {
+                    bits: "11:7",
+                    name: "rd",
+                    value: "destination register"
+                },
+                {
+                    bits: "14:12",
+                    name: "funct3",
+                    value: "000"
+                },
+                {
+                    bits: "19:15",
+                    name: "rs1",
+                    value: "source register 1"
+                },
+                {
+                    bits: "24:20",
+                    name: "rs2",
+                    value: "source register 2"
+                },
+                {
+                    bits: "31:25",
+                    name: "funct7",
+                    value: "0000001"
+                }
+            ]
+        }
+   ],
+   "RV32C":[
+        {
+            "name": "c.addi",
+            "description": "Compressed add immediate",
+            "encoding": "01",
+            "format": "CI-type",
+            "fields": [
+                {
+                    bits: "1:0",
+                    name: "opcode",
+                    value: "01"
+                },
+                {
+                    bits: "11:7",
+                    name: "rd/rs1",
+                    value: "destination/source register"
+                },
+                {
+                    bits: "12",
+                    name: "imm[5]",
+                    value: "immediate[5]"
+                },
+                {
+                    bits: "6:2",
+                    name: "imm[4:0]",
+                    value: "immediate[4:0]"
+                }
+            ]
+        }
+   ],
+   "RV32_Zicsr":[
+        {
+            "name": "csrrw",
+            "description": "Atomic Read/Write CSR",
+            "encoding": "1110011",
+            "format": "I-type",
+            "fields": [
+                {
+                    bits: "6:0",
+                    name: "opcode",
+                    value: "1110011"
+                },
+                {
+                    bits: "11:7",
+                    name: "rd",
+                    value: "destination register"
+                },
+                {
+                    bits: "14:12",
+                    name: "funct3",
+                    value: "001"
+                },
+                {
+                    bits: "19:15",
+                    name: "rs1",
+                    value: "source register"
+                },
+                {
+                    bits: "31:20",
+                    name: "csr",
+                    value: "CSR address"
+                }
+            ]
+        }
+   ]
+}

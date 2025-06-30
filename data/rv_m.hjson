@@ -1,0 +1,318 @@
+{
+   "name": "RV32M Instructions",
+   "description": "A comprehensive collection of RISC-V Multiply/Divide (RV32M) instructions with their encodings and descriptions.",
+   "RV_M": [
+        {
+            "name": "mul",
+            "description": "Multiply (lower 32 bits)",
+            "encoding": "0110011",
+            "format": "R-type",
+            "example": "mul x5, x6, x7",
+            "fields": [
+                {
+                    "bits": "6:0",
+                    "name": "opcode",
+                    "value": "0110011"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register"
+                },
+                {
+                    "bits": "14:12",
+                    "name": "funct3",
+                    "value": "000"
+                },
+                {
+                    "bits": "19:15",
+                    "name": "rs1",
+                    "value": "source register 1"
+                },
+                {
+                    "bits": "24:20",
+                    "name": "rs2",
+                    "value": "source register 2"
+                },
+                {
+                    "bits": "31:25",
+                    "name": "funct7",
+                    "value": "0000001"
+                }
+            ]
+        },
+        {
+            "name": "mulh",
+            "description": "Multiply high (upper 32 bits of signed × signed)",
+            "encoding": "0110011",
+            "format": "R-type",
+            "example": "mulh x5, x6, x7",
+            "fields": [
+                {
+                    "bits": "6:0",
+                    "name": "opcode",
+                    "value": "0110011"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register"
+                },
+                {
+                    "bits": "14:12",
+                    "name": "funct3",
+                    "value": "001"
+                },
+                {
+                    "bits": "19:15",
+                    "name": "rs1",
+                    "value": "source register 1 (signed)"
+                },
+                {
+                    "bits": "24:20",
+                    "name": "rs2",
+                    "value": "source register 2 (signed)"
+                },
+                {
+                    "bits": "31:25",
+                    "name": "funct7",
+                    "value": "0000001"
+                }
+            ]
+        },
+        {
+            "name": "mulhsu",
+            "description": "Multiply high (upper 32 bits of signed × unsigned)",
+            "encoding": "0110011",
+            "format": "R-type",
+            "example": "mulhsu x5, x6, x7",
+            "fields": [
+                {
+                    "bits": "6:0",
+                    "name": "opcode",
+                    "value": "0110011"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register"
+                },
+                {
+                    "bits": "14:12",
+                    "name": "funct3",
+                    "value": "010"
+                },
+                {
+                    "bits": "19:15",
+                    "name": "rs1",
+                    "value": "source register 1 (signed)"
+                },
+                {
+                    "bits": "24:20",
+                    "name": "rs2",
+                    "value": "source register 2 (unsigned)"
+                },
+                {
+                    "bits": "31:25",
+                    "name": "funct7",
+                    "value": "0000001"
+                }
+            ]
+        },
+        {
+            "name": "mulhu",
+            "description": "Multiply high (upper 32 bits of unsigned × unsigned)",
+            "encoding": "0110011",
+            "format": "R-type",
+            "example": "mulhu x5, x6, x7",
+            "fields": [
+                {
+                    "bits": "6:0",
+                    "name": "opcode",
+                    "value": "0110011"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register"
+                },
+                {
+                    "bits": "14:12",
+                    "name": "funct3",
+                    "value": "011"
+                },
+                {
+                    "bits": "19:15",
+                    "name": "rs1",
+                    "value": "source register 1 (unsigned)"
+                },
+                {
+                    "bits": "24:20",
+                    "name": "rs2",
+                    "value": "source register 2 (unsigned)"
+                },
+                {
+                    "bits": "31:25",
+                    "name": "funct7",
+                    "value": "0000001"
+                }
+            ]
+        },
+        {
+            "name": "div",
+            "description": "Divide (signed)",
+            "encoding": "0110011",
+            "format": "R-type",
+            "example": "div x5, x6, x7",
+            "fields": [
+                {
+                    "bits": "6:0",
+                    "name": "opcode",
+                    "value": "0110011"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register"
+                },
+                {
+                    "bits": "14:12",
+                    "name": "funct3",
+                    "value": "100"
+                },
+                {
+                    "bits": "19:15",
+                    "name": "rs1",
+                    "value": "dividend register (signed)"
+                },
+                {
+                    "bits": "24:20",
+                    "name": "rs2",
+                    "value": "divisor register (signed)"
+                },
+                {
+                    "bits": "31:25",
+                    "name": "funct7",
+                    "value": "0000001"
+                }
+            ]
+        },
+        {
+            "name": "divu",
+            "description": "Divide (unsigned)",
+            "encoding": "0110011",
+            "format": "R-type",
+            "example": "divu x5, x6, x7",
+            "fields": [
+                {
+                    "bits": "6:0",
+                    "name": "opcode",
+                    "value": "0110011"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register"
+                },
+                {
+                    "bits": "14:12",
+                    "name": "funct3",
+                    "value": "101"
+                },
+                {
+                    "bits": "19:15",
+                    "name": "rs1",
+                    "value": "dividend register (unsigned)"
+                },
+                {
+                    "bits": "24:20",
+                    "name": "rs2",
+                    "value": "divisor register (unsigned)"
+                },
+                {
+                    "bits": "31:25",
+                    "name": "funct7",
+                    "value": "0000001"
+                }
+            ]
+        },
+        {
+            "name": "rem",
+            "description": "Remainder (signed)",
+            "encoding": "0110011",
+            "format": "R-type",
+            "example": "rem x5, x6, x7",
+            "fields": [
+                {
+                    "bits": "6:0",
+                    "name": "opcode",
+                    "value": "0110011"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register"
+                },
+                {
+                    "bits": "14:12",
+                    "name": "funct3",
+                    "value": "110"
+                },
+                {
+                    "bits": "19:15",
+                    "name": "rs1",
+                    "value": "dividend register (signed)"
+                },
+                {
+                    "bits": "24:20",
+                    "name": "rs2",
+                    "value": "divisor register (signed)"
+                },
+                {
+                    "bits": "31:25",
+                    "name": "funct7",
+                    "value": "0000001"
+                }
+            ]
+        },
+        {
+            "name": "remu",
+            "description": "Remainder (unsigned)",
+            "encoding": "0110011",
+            "format": "R-type",
+            "example": "remu x5, x6, x7",
+            "fields": [
+                {
+                    "bits": "6:0",
+                    "name": "opcode",
+                    "value": "0110011"
+                },
+                {
+                    "bits": "11:7",
+                    "name": "rd",
+                    "value": "destination register"
+                },
+                {
+                    "bits": "14:12",
+                    "name": "funct3",
+                    "value": "111"
+                },
+                {
+                    "bits": "19:15",
+                    "name": "rs1",
+                    "value": "dividend register (unsigned)"
+                },
+                {
+                    "bits": "24:20",
+                    "name": "rs2",
+                    "value": "divisor register (unsigned)"
+                },
+                {
+                    "bits": "31:25",
+                    "name": "funct7",
+                    "value": "0000001"
+                }
+            ]
+        }
+   ]
+}
